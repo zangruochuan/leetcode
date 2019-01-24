@@ -36,14 +36,32 @@
  * 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
  * 
  */
-public class Solution {
-    public int Reverse(int x) {
-        int y = 0;
-        string s = x.ToString();
-        for (int i = 0; i < s.Length; i++)
+public class Solution
+{
+    public int Reverse(int x)
+    {
+        try
         {
-            y += ((int)s[i])*(exp(10)^(s.Length-i-1));
+            long y = 0;
+            int isPositive = System.Math.Sign(x);
+            int absX = System.Math.Abs(x);
+            string s = absX.ToString();
+            for (int i = 0; i < s.Length; i++)
+            {
+                y += System.Convert.ToInt64(int.Parse(s[i].ToString()) * (System.Math.Pow(10, i)));
+            }
+            if (isPositive * y<int.MaxValue && isPositive *y >int.MinValue)
+            {
+                return isPositive * (int)y;
+            }
+            else
+            {
+                return 0;
+            }
         }
-        return y;
+        catch (System.OverflowException)
+        {
+            return 0;
+        }
     }
 }
