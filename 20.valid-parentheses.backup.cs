@@ -52,51 +52,40 @@
  * 输出: true
  * 
  */
-using System.Collections.Generic;
-
 public class Solution {
     public bool IsValid(string s) {
-        Stack<char> sta = new Stack<char>();
         if (string.IsNullOrEmpty(s))
         {
             return true;
         }
-        foreach (char item in s)
+        int len = 0;
+        while (len != s.Length)
         {
-            if (item=='(' || item == '[' || item == '{')
+            len = s.Length;
+            if (s.IndexOf("()")!=-1)
             {
-                sta.Push(item);
-            }
-            else
-            {
-                if (sta.Count!=0)
+                s = s.Substring(0,s.IndexOf("()"))+s.Substring(s.IndexOf("()")+2);
+                if (s.Length == 0)
                 {
-                    if(sta.Peek()=='('&&item==')')
-                    {
-                        sta.Pop();
-                    }
-                    else if(sta.Peek()=='['&&item==']')
-                    {
-                        sta.Pop();
-                    }
-                    else if(sta.Peek()=='{'&&item=='}')
-                    {
-                        sta.Pop();
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
-                else
-                {
-                    return false;
-                }                
             }
-        }
-        if (sta.Count == 0)
-        {
-            return true;
+            if (s.IndexOf("[]")!=-1)
+            {
+                s = s.Substring(0,s.IndexOf("[]"))+s.Substring(s.IndexOf("[]")+2);
+                if (s.Length == 0)
+                {
+                    return true;
+                }
+            }
+            if (s.IndexOf("{}")!=-1)
+            {
+                s = s.Substring(0,s.IndexOf("{}"))+s.Substring(s.IndexOf("{}")+2);
+                if (s.Length == 0)
+                {
+                    return true;
+                }
+            }            
         }
         return false;
     }
