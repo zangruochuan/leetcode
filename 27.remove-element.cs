@@ -87,11 +87,11 @@ public class Solution
                     }
                 }
             }
-            if (tail==i)
+            if (tail == i)
             {
-                if (nums[i]!=val)
+                if (nums[i] != val)
                 {
-                    return i+1;
+                    return i + 1;
                 }
                 else
                 {
@@ -102,3 +102,22 @@ public class Solution
         return 0;
     }
 }
+// 记录一下别人的解题思路，代码量更少，把问题分析的更容易理解
+// public class Solution
+// {
+//     public int RemoveElement(int[] nums, int val)
+//     {
+//         if (nums.Length == 0)
+//             return nums.Length;
+
+//         int i = 0;
+//         int j = 0;
+//         for (; j < nums.Length; j++)
+//         {
+//             if (nums[j] != val)
+//                 nums[i++] = nums[j];
+//         }
+
+//         return i;
+//     }
+// }
