@@ -33,8 +33,8 @@ public class Solution {
         string s = "";
         for (int i = 0; i < Length; i++)
         {
-            int aa = a.Length>i?int.Parse(a[a.Length-i-1].ToString()):0;
-            int bb = b.Length>i?int.Parse(b[b.Length-i-1].ToString()):0;
+            int aa = a.Length>i?a[a.Length-i-1]-48:0;
+            int bb = b.Length>i?b[b.Length-i-1]-48:0;
             s = ((aa+bb+pflag)%2).ToString() + s;
             if (aa+bb+pflag > 1)
             {
