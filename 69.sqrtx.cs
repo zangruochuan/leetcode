@@ -32,34 +32,12 @@
  * 
  * 
  */
+using System;
+
 public class Solution
 {
     public int MySqrt(int x)
     {
-        int i = 0;
-        while (true)
-        {
-            checked
-            {
-                try
-                {
-                    if (i * i == x)
-                    {
-                        return i;
-                    }
-                    if (i * i > x)
-                    {
-                        return i - 1;
-                    }
-                    i++;
-
-                }
-                catch (System.OverflowException ex)
-                {
-                    return i-1;
-                }
-
-            }
-        }
+        return (int)Math.Sqrt(x);
     }
 }
