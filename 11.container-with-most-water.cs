@@ -31,23 +31,34 @@
 public class Solution {
     public int MaxArea(int[] height) {
         int max = 0;
-        for (int i = 0; i < height.Length; i++)
+        int left = 0;
+        int right = height.Length - 1;
+        while (true)
         {
-            for (int j = i+1; j < height.Length; j++)
+            int minHeight = 0;
+            if (height[left]>height[right])
             {
-                int minHeight = 0;
-                if (height[i]<height[j])
-                {
-                    minHeight = height[i];
-                }
-                else
-                {
-                    minHeight = height[j];
-                }
-                if ((j-i)*minHeight>max)
-                {
-                    max = (j-i)*minHeight;
-                }
+                minHeight = height[right];
+            }
+            else
+            {
+                minHeight = height[left];
+            }
+            if (left >= right)
+            {
+                break;
+            }
+            if ((right-left)*minHeight>max)
+            {
+                max = (right-left)*minHeight;
+            }
+            if (height[left]>height[right])
+            {
+                right--;
+            }
+            else
+            {
+                left++;
             }
         }
         return max;
